@@ -121,7 +121,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'templates/static/'),
 )
 
-API = 'paste_api_link'
+API_URL = 'http://127.0.0.1:8080/api/'
+API_MEDIA_URL = 'http://127.0.0.1:8080/media/'
 
 django_heroku.settings(locals())
 #MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')

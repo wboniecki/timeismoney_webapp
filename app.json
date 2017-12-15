@@ -10,8 +10,12 @@
       "description": "The secret key for the Django application.",
       "generator": "secret"
     },
-    "API": {
-      "description": "API link of TIMEISMONEY"
+    "API_URL": {
+      "description": "API URL link to TIMEISMONEY",
+      "value": "replace_me"
+    },
+    "API_MEDIA_URL": {
+      "description": "API media files URL link to TIMEISMONEY",
       "value": "replace_me"
     }
   },
