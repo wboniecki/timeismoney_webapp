@@ -15,7 +15,7 @@
         url: '/chart-data/'+realmSlug+'/hourly/'+itemId,
         dataType: 'json',
         success: function (result) {
-          console.log(JSON.stringify(result));
+          //console.log(JSON.stringify(result));
           for (i = 0; i < result.length; i++) {
             dateUTC = Date.parse(result[i].datetime);
             hourly_data_market_price.push([dateUTC, parseFloat(result[i].market_price)]);

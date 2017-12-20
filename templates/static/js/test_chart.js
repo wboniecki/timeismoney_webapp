@@ -1,5 +1,5 @@
 function hourlyChart(hourly_data_market_price, hourly_data_quantity) {
-  console.log(hourly_data_quantity.toString());
+  //console.log(hourly_data_quantity.toString());
   Highcharts.chart('container', {
     chart: {
       zoomType: 'x'
