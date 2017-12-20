@@ -22,9 +22,9 @@
       Connected with:
       <ul>
       {% for each in connected_realms %}
-        {% if realm.name != each.0 %}
+        {% if realm.name != each.name %}
         <li>
-          <a href="/{{ each.1 }}/item/{{ item.itemId }}" class="with-underline">{{ each.0 }}</a>
+          <a href="/{{ each.slug }}/item/{{ item.itemId }}" class="with-underline">{{ each.name }}</a>
         </li>
         {% endif %}
       {% endfor %}

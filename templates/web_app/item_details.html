@@ -11,12 +11,11 @@
       var realmSlug = "{{ realm.slug }}";
       var hourly_data_market_price = new Array();
       var hourly_data_quantity = new Array();
-      console.log(realmSlug);
       $.ajax({
-        url: '/api/'+realmSlug+'/hourly/'+itemId,
+        url: '/chart-data/'+realmSlug+'/hourly/'+itemId,
         dataType: 'json',
         success: function (result) {
-          //console.log(JSON.stringify(result));
+          console.log(JSON.stringify(result));
           for (i = 0; i < result.length; i++) {
             dateUTC = Date.parse(result[i].datetime);
             hourly_data_market_price.push([dateUTC, parseFloat(result[i].market_price)]);
@@ -37,7 +36,7 @@
 <div class="item-name with-underline">
   <a href="http://wowhead.com/item={{ item.itemId }}" target="_blank">
     <div class="item-img">
-      <img src="/media/icons/56/{{ item.icon }}.jpg" alt="{{ item.icon }}">
+      <img src="{{ media }}icons/56/{{ item.icon }}.jpg" alt="{{ item.icon }}">
     </div>
     [{{ item.name }}]
   </a>
