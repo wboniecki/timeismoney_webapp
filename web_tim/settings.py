@@ -123,9 +123,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'templates/static/'),
 )
+# DEV
+#API_URL = 'http://127.0.0.1:8080/api/'
+# PROD
+API_URL = 'http://vps402484.ovh.net/api/'
 
-API_URL = 'http://127.0.0.1:8080/api/'
-API_MEDIA_URL = 'http://127.0.0.1:8080/media/'
+# DEV
+#API_MEDIA_URL = 'http://127.0.0.1:8080/media/'
+# PROD
+API_MEDIA_URL = 'http://vps402484.ovh.net/media/'
 
 django_heroku.settings(locals())
 #MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')

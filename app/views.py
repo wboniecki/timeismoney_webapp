@@ -5,6 +5,9 @@ from django.http import HttpResponse, JsonResponse
 from .utils import getApiLinkData
 
 # Create your views here.
+def test_page(request):
+    return render(request, 'web_app/item_details.html', {})
+
 def home_page(request):
     return render(request, 'web_app/index.html', {})
 
