@@ -1,11 +1,41 @@
-function hourlyChart(hourly_data_market_price, hourly_data_quantity) {
+function hourlyChart(daily_data_avg_market_price, daily_data_max_quantity) {
   //console.log(hourly_data_quantity.toString());
   Highcharts.chart('container', {
     chart: {
       zoomType: 'x'
     },
+    rangeSelector: {
+      enabled: true,
+      inputEnabled: false,
+      allButtonsEnabled: true,
+      buttons: [{
+        type: 'day',
+        count: 1,
+        text: 'day',
+        dataGrouping: {
+            forced: true,
+            units: [['day', [1]]]
+        }
+      },{
+        type: 'week',
+        count: 1,
+        text: '1w',
+        dataGrouping: {
+            forced: true,
+            units: [['week', [1]]]
+        }
+      },{
+        type: 'all',
+        count: 2,
+        text: 'all'
+    }],
+      buttonTheme: {
+        width: 60
+      },
+      selected: 2
+    },
     title: {
-      text: 'USD to EUR exchange rate over time'
+      text: 'Hourly chart data'
     },
     subtitle: {
       text: document.ontouchstart === undefined ?
@@ -14,7 +44,7 @@ function hourlyChart(hourly_data_market_price, hourly_data_quantity) {
     xAxis: {
       type: 'datetime',
       labels: {
-        format: '{value:%b-%e}'
+        format: '{value:%e-%b}'
       },
       tickInterval: 24 * 3600 * 1000,
     },
@@ -76,12 +106,12 @@ function hourlyChart(hourly_data_market_price, hourly_data_quantity) {
       type: 'area',
       name: 'Market price',
       yAxis: 1,
-      data: hourly_data_market_price
+      data: daily_data_avg_market_price
     },{
       type: 'line',
       name: 'Quantity',
       yAxis: 0,
-      data: hourly_data_quantity
+      data: daily_data_max_quantity
     }]
   });
 }

@@ -12,7 +12,7 @@
 // Load the fonts
 //import Highcharts from '../parts/Globals.js';
 Highcharts.createElement('link', {
-	href: 'https://fonts.googleapis.com/css?family=Lato:300',
+	href: 'https://fonts.googleapis.com/css?family=Lato',
 	rel: 'stylesheet',
 	type: 'text/css'
 }, null, document.getElementsByTagName('head')[0]);
@@ -21,15 +21,16 @@ Highcharts.theme = {
 	colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
 		'#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
 	chart: {
-		backgroundColor: {
-			linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-			stops: [
-				[0, '#2a2a2b'],
-				[1, '#3e3e40']
-			]
-		},
+		backgroundColor: '#242424',
+		// backgroundColor: {
+		// 	linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+		// 	stops: [
+		// 		[0, '#2a2a2b'],
+		// 		[1, '#3e3e40']
+		// 	]
+		// },
 		style: {
-			fontFamily: '\'Unica One\', sans-serif'
+			fontFamily: '\'Lato\', sans-serif'
 		},
 		plotBorderColor: '#606063'
 	},
@@ -37,7 +38,7 @@ Highcharts.theme = {
 		style: {
 			color: '#E0E0E3',
 			textTransform: 'uppercase',
-			fontSize: '20px'
+			fontSize: '25px'
 		}
 	},
 	subtitle: {
@@ -96,10 +97,12 @@ Highcharts.theme = {
 			}
 		},
 		boxplot: {
-			fillColor: '#505053'
+			fillColor: 'rgba(0, 0, 0, 0.1)',
+			color: '#F0F0F0'
 		},
 		candlestick: {
-			lineColor: 'white'
+			//lineColor: 'white',
+			//lineWidth: 0
 		},
 		errorbar: {
 			color: 'white'

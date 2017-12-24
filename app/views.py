@@ -18,6 +18,20 @@ def item_hourly_chart_data(request, realm_slug, item_id):
     except urllib.error.URLError as e:
         return HttpResponse(status=404)
 
+def item_daily_chart_data(request, realm_slug, item_id):
+    try:
+        tsd_data = getApiLinkData(realm_slug+"/daily/"+item_id)
+        return JsonResponse(tsd_data, safe=False)
+    except urllib.error.URLError as e:
+        return HttpResponse(status=404)
+
+def item_daily_details_chart_data(request, realm_slug, item_id):
+    try:
+        tsd_data = getApiLinkData(realm_slug+"/daily-details/"+item_id)
+        return JsonResponse(tsd_data, safe=False)
+    except urllib.error.URLError as e:
+        return HttpResponse(status=404)
+
 def item_details_view(request, realm_slug, item_id):
     # realm_service = RealmService()
     # item_service = ItemService()

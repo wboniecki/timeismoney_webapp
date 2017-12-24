@@ -7,8 +7,14 @@
   {% include "web_app/headers.html" %}
   <script>
     $(document).ready(function(){
-      var itemId = "{{ item.itemId }}";
-      var realmSlug = "{{ realm.slug }}";
+      itemId = "{{ item.itemId }}";
+      realmSlug = "{{ realm.slug }}";
+      if(chart_loader(itemId, realmSlug)) {
+        //setTimeout(function() {$("#charts").show();$("#loader").hide();}, 5000);
+        $("#charts").show();
+        $("#loader").hide();
+      }
+      /*
       var hourly_data_market_price = new Array();
       var hourly_data_quantity = new Array();
       $.ajax({
@@ -28,6 +34,7 @@
           console.log('Error time series hourly data');
         }
       });
+      */
     });
   </script> 
 </head>
@@ -71,7 +78,13 @@
   <div class="pure-u-1 pure-u-md-1-2 pure-u-xl-2-3">
   </div>
 </div>
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="charts" style="display: none;">
+  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  <div id="daily-charts">
+    <div id="daily-chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <div id="daily-details-chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  </div>
+</div>
 <div id="loader">
   <img src="{% static 'svg/Blocks.svg' %}" alt="gear">
 </div>

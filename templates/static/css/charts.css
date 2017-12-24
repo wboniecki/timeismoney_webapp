@@ -1,0 +1,14 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+.highcharts-candlestick-series .highcharts-point {
+	stroke: #2f7ed8;
+}
+.highcharts-candlestick-series .highcharts-point-up {
+	stroke: silver;
+	fill: silver;
+}
+
+.highcharts-background {
+    fill: #242424;
+    stroke: rgb(223, 83, 83);
+}
