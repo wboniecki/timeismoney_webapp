@@ -1,6 +1,6 @@
 function hourlyChart(daily_data_avg_market_price, daily_data_max_quantity) {
   //console.log(hourly_data_quantity.toString());
-  Highcharts.chart('container', {
+  Highcharts.chart('hourly-chart', {
     chart: {
       zoomType: 'x'
     },
@@ -114,4 +114,5 @@ function hourlyChart(daily_data_avg_market_price, daily_data_max_quantity) {
       data: daily_data_max_quantity
     }]
   });
+  $('#hourly-chart').show();
 }

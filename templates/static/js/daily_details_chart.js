@@ -1,4 +1,4 @@
-function dailyDetailsChart(daily_market_price_data, daily_avg_market_price) {
+function dailyDetailsChart(daily_market_price_data, daily_avg_market_price, daily_quantity_data, daily_avg_quantity_data) {
     Highcharts.stockChart('daily-details-chart', {
         
             rangeSelector: {
@@ -74,4 +74,66 @@ function dailyDetailsChart(daily_market_price_data, daily_avg_market_price) {
                   'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
               },
         });
+        $('#daily-details-chart').show();
+
+        Highcharts.chart('daily-quantity-details-chart', {
+            chart: {
+                zoomType: 'x'
+            },
+    
+            title: {
+                text: 'Quantity variation by day'
+            },
+    
+            xAxis: {
+                type: 'datetime',
+                labels: {
+                    format: '{value:%e-%b}'
+                    },
+                tickInterval: 24 * 3600 * 1000,
+            },
+    
+            yAxis: {
+                title: {
+                    text: 'Quantity'
+                }
+            },
+    
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                //valueSuffix: '°C'
+            },
+    
+            legend: {
+                enabled: false
+            },
+
+            plotOptions: {
+                arearange: {
+                    fillColor: 'rgba(43,144,143,0.4)',
+                    color: 'rgba(43,144,143,1)',
+                    marker: {
+                        radius: 0
+                    }
+                },
+                line: {
+                    color: 'rgba(43,144,143,1)',
+                    marker: {
+                        radius: 0
+                    }
+                }
+            },
+    
+            series: [{
+                type: 'arearange',
+                name: 'Quantity',
+                data: daily_quantity_data
+            }, {
+                type: 'line',
+                name: 'Avg',
+                data: daily_avg_quantity_data,
+            }]
+        });
+        $('#daily-quantity-details-chart').show();
   }

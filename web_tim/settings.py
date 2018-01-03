@@ -129,9 +129,9 @@ STATICFILES_DIRS = (
 API_URL = 'http://188.116.52.61/api/'
 
 # DEV
-#API_MEDIA_URL = 'http://127.0.0.1:8080/media/'
+API_MEDIA_URL = 'http://127.0.0.1:8080/media/'
 # PROD
-API_MEDIA_URL = 'http://188.116.52.61/media/'
+#API_MEDIA_URL = 'http://188.116.52.61/media/'
 
 django_heroku.settings(locals())
 #MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')

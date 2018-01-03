@@ -114,4 +114,5 @@ function dailyChart(daily_avg_market_price_data, daily_max_quantity_data) {
         data: daily_max_quantity_data
       }]
     });
+    $('#daily-chart').show();
   }

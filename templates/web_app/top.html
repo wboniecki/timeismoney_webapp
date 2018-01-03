@@ -8,11 +8,20 @@
   </div>
   <div class="pure-u-1 pure-u-md-1-4">
     {% if realm %}
+    <script>
+      $(document).ready(function(){
+        date_modified = Date.parse("{{ realm.dateModified }}");
+        time_modified = parseInt((Date.now() - date_modified) / 60000);
+        console.log("{{ realm.dateModified }}");
+        $("#realmdate").text(time_modified);
+        //$("#realmdate").text(Highcharts.dateFormat('%e-%b', date_modified));
+      });
+    </script>
     <div class="realm-name">
       <a href="/{{ realm.slug }}" class="with-underline">{{ realm.name }}</a>
     </div>
     <div class="realm-details">
-      Last modified: {{ realm.dateModified }}
+      Last modified: <span id="realmdate"></span> minutes ago
     </div>
     <div class="realm-details">
       Population: {{ realm.population }}
