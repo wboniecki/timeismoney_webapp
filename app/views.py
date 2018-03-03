@@ -9,7 +9,30 @@ def test_page(request):
     return render(request, 'web_app/item_details.html', {})
 
 def home_page(request):
-    return render(request, 'web_app/index.html', {})
+    realms = getApiLinkData("realms")
+    return render(request, 'web_app/index.html', {'realms': realms})
+
+def realm_home_page(request, realm_slug):
+    realm = getApiLinkData("realm/"+realm_slug)
+    auction_count = getApiLinkData(realm_slug+"/auction-count")
+    connected_realms = getApiLinkData("connected-realm/" + realm_slug)
+    if not realm['isActive']:
+        return HttpResponse(status=404)
+
+    return render(request, 'web_app/realm.html',
+                  {
+                      'realm': realm,
+                      'connected_realms': connected_realms,
+                      'aucCount': auction_count,
+                      'media': settings.API_MEDIA_URL
+                  })
+
+def item_list(request):
+    try:
+        items = getApiLinkData("item-list")
+        return JsonResponse(items, safe=False)
+    except urllib.error.URLError as e:
+        return HttpResponse(status=404)
 
 def item_hourly_chart_data(request, realm_slug, item_id):
     try:

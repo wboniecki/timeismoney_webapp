@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ realm.name }} - #TIMEISMONEY</title>
+    {% include "web_app/headers.html" %}
+    <script>
+        $( function() {
+            // Generate item autocomplete table
+            //localStorage.clear();          
+            items = new Array();
+            /*
+            if(typeof(Storage) !== "undefined") {
+                if (localStorage.getItem('itemlist') === null) {
+                    item_url = '/item-list';
+                    item_list = $.ajax({
+                        url: item_url,
+                        dataType: 'json',
+                        error: function() {
+                            console.log("Error when load item list data");
+                        }
+                    });
+                    item_list.done(function(result){
+                        for (i = 0; i < result.length; i++) {
+                            items.push({
+                                'label': result[i].name,
+                                'value': result[i].itemId,
+                                'icon': result[i].icon
+                            });
+                        }
+                    });
+
+                    localStorage.setItem('itemlist', JSON.stringify(items));
+                    console.log('Create new localStorage');
+
+                } else {
+                    items = JSON.parse(localStorage.getItem('itemlist'));
+                    console.log(items);
+                    console.log('Using exist localStorage');
+                }
+            }
+            */
+            item_url = '/item-list';
+            item_list = $.ajax({
+                url: item_url,
+                dataType: 'json',
+                error: function() {
+                    console.log("Error when load item list data");
+                }
+            });
+            item_list.done(function(result){
+                for (i = 0; i < result.length; i++) {
+                    items.push({
+                        'label': result[i].name,
+                        'value': result[i].itemId,
+                        'icon': result[i].icon
+                    });
+                }
+            });
+            $('#itemnames').autocomplete({
+                source: items,
+                minLength: 3,
+                focus: function (event, ui) {
+                    $('#itemnames').val(ui.item.label);
+                    return false;
+                },
+                select: function(event, ui) {
+                    $('#item-name').html(ui.item.label);
+                    $('#item-href').attr("href", "item/"+ui.item.value);
+                    $('#item-icon').attr("src", "{{media}}icons/18/"+ui.item.icon+".jpg");
+                    $('#item-icon').attr("alt", ui.item.icon);
+                    $('#item-icon').show();
+                    return false;
+                }
+            }).autocomplete('instance')._renderItem = function(ul, item) {
+                return $("<li></li>").data(
+                    'item.autocomplete', item
+                ).append(
+                    "<a class='with-underline with-pointer' customattribute-'" + item.customattribute + "'>" + item.label + "</a>"
+                ).appendTo(ul);
+            };
+        })
+    </script>
+</head>
+<body>
+{% include "web_app/top.html" %}
+<div class="search-form">
+    <div class="realm-name">Search item:</div>
+    <form class="pure-form">
+        <div class="ui-widget">
+            <input class="pure-input-1" type="text" id="itemnames" placeholder="Start searching..."/>
+        </div>
+    </form>
+    <div class="item-name-small with-underline">
+        <a href="" id="item-href">
+            <span class="item-img-small">
+                <img src="" alt="" id="item-icon" style="display: none">
+            </span>
+            <span id="item-name"></span>
+        </a>
+    </div>
+</div>
+</body>
+</html>

@@ -7,5 +7,21 @@
 </head>
 <body>
 {% include "web_app/top.html" %}
+<div class="realm-name">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, repellendus.
+</div>
+
+<div class="realm-details">
+    Available servers:
+    {% if realms %}
+    {% for each in realms %}
+    <li>
+        <a href="/{{ each.slug }}/home" class="with-underline">{{ each.name }}</a>
+    </li>
+    {% endfor %}
+    {% else %}
+    <div>There is no available server at this time. :( Please come back later!</div>
+    {% endif %}
+</div>
 </body>
 </html>
