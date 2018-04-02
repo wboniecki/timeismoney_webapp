@@ -124,7 +124,36 @@ function dailyDetailsChart(daily_market_price_data, daily_avg_market_price, dail
                     }
                 }
             },
-    
+            rangeSelector: {
+                enabled: true,
+                inputEnabled: false,
+                allButtonsEnabled: true,
+                buttons: [{
+                  type: 'week',
+                  count: 1,
+                  text: '1w'
+                },{
+                  type: 'month',
+                  count: 1,
+                  text: '1m'
+                },{
+                  type: 'month',
+                  count: 3,
+                  text: '3m'
+                },{
+                  type: 'ytd',
+                  count: 1,
+                  text: 'YTD'
+              },{
+                  type: 'year',
+                  count: 1,
+                  text: '1y'
+              }],
+                buttonTheme: {
+                  width: 60
+                },
+                selected: 1
+            }, 
             series: [{
                 type: 'arearange',
                 name: 'Quantity',

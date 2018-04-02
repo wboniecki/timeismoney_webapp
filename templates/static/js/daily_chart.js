@@ -9,30 +9,30 @@ function dailyChart(daily_avg_market_price_data, daily_max_quantity_data) {
         inputEnabled: false,
         allButtonsEnabled: true,
         buttons: [{
-          type: 'day',
-          count: 1,
-          text: 'day',
-          dataGrouping: {
-              forced: true,
-              units: [['day', [1]]]
-          }
-        },{
           type: 'week',
           count: 1,
-          text: '1w',
-          dataGrouping: {
-              forced: true,
-              units: [['week', [1]]]
-          }
+          text: '1w'
         },{
-          type: 'all',
-          count: 2,
-          text: 'all'
+          type: 'month',
+          count: 1,
+          text: '1m'
+        },{
+          type: 'month',
+          count: 3,
+          text: '3m'
+        },{
+          type: 'ytd',
+          count: 1,
+          text: 'YTD'
+      },{
+          type: 'year',
+          count: 1,
+          text: '1y'
       }],
         buttonTheme: {
           width: 60
         },
-        selected: 2
+        selected: 1
       },
       title: {
         text: 'Daily chart data'
